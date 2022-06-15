@@ -1,0 +1,41 @@
+@font-face {
+    font-family: myBraille;
+    src: url(../font/braille-dots.ttf);
+}
+
+@font-face {
+    font-family: myBrailleNoDots;
+    src: url(../font/braille-regular.ttf);
+}
+
+.material-symbols-outlined {
+    color: #8e8e8e;
+}
+
+.divider {
+    border-style: none none solid none;
+    border-width: 1px;
+    border-color: #DADADA;
+}
+
+.braille-dots {
+    font-family: myBraille;
+}
+
+.braille-word {
+    font-size: 6rem;
+    letter-spacing: 10px;
+}
+
+.no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+td:nth-child(2) {
+    font-family: myBrailleNoDots;
+}
