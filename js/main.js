@@ -85,6 +85,7 @@ function add2Chart(word) {
     cell = row.insertCell();
     cell.classList.add('fs-2');
     cell.classList.add('no-select');
+    cell.classList.add('align-middle');
     cell.innerHTML = word;
 }
 
