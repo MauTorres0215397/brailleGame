@@ -49,3 +49,7 @@ td:nth-child(2) {
         font-size: 70px;
     }
 }
+
+::-webkit-scrollbar {
+    display: none;
+}
