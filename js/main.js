@@ -93,7 +93,7 @@ let stopwatch = new Stopwatch(document.querySelector('.stopwatch'));
 let firstChar = true;
 
 // braille display word
-let words = ['sandia', 'perro', 'labrador', 'adelante', 'cruce', 'comida', 'guia', 'perdido'];
+let words = ['q', 'qw', 'qwe', 'qwer', 'qwert', 'qwerty', 'qwertyu', 'qwertyui'];
 let index = 0;
 
 window.addEventListener('DOMContentLoaded', (event) => {

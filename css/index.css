@@ -8,6 +8,10 @@
     src: url(../font/braille-regular.ttf);
 }
 
+body {
+    overflow-x: hidden;
+}
+
 .material-symbols-outlined {
     color: #8e8e8e;
 }
