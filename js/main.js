@@ -94,7 +94,8 @@ let stopwatch = new Stopwatch(document.querySelector('.stopwatch'));
 let firstChar = true;
 
 // braille display word
-let words = ['q', 'qw', 'qwe', 'qwer', 'qwert', 'qwerty', 'qwertyu', 'qwertyui'];
+let words = ['perro', 'pastor', 'braille', 'puntos', 'ceguera', 'ciego', 'libro', 'poder', 'puntos', 'bastones', 'vidente', 'signo'];
+words = words.sort(() => Math.random() - 0.5)
 let index = 0;
 
 window.addEventListener('DOMContentLoaded', (event) => {
