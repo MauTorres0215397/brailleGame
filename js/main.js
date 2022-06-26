@@ -9,6 +9,7 @@ class Stopwatch {
 
     reset() {
         this.times = [0, 0, 0];
+        this.print();
     }
 
     start() {
@@ -72,7 +73,7 @@ function pad0(value, count) {
 function getResults() {
     document.querySelector('input').disabled = true;
     var totAnswered = document.querySelectorAll('tr').length;
-    document.querySelector('.text-success').innerHTML = totAnswered + " palabras";
+    document.querySelector('.text-success').innerHTML = totAnswered + ' palabras';
 }
 
 let chart = document.querySelector('.answer-table');
@@ -94,18 +95,18 @@ let stopwatch = new Stopwatch(document.querySelector('.stopwatch'));
 let firstChar = true;
 
 // braille display word
+let brailleWord = document.querySelector('.braille-dots')
 let words = ['perro', 'pastor', 'braille', 'puntos', 'ceguera', 'ciego', 'libro', 'poder', 'puntos', 'bastones', 'vidente', 'signo'];
-words = words.sort(() => Math.random() - 0.5)
-let index = 0;
+let letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+words = words.sort(() => Math.random() - 0.5);
+letters = letters.sort(() => Math.random() - 0.5);
+
+let input = document.querySelector('input');
+let activeSet = true;
 
 window.addEventListener('DOMContentLoaded', (event) => {
-    // display the first one
-    let brailleWord = document.querySelector('.braille-dots')
-    // if they were a lot of words, we would use: Math.round(Math.random() * words.length - 1) - 1
-    brailleWord.innerHTML = words[index];
-    index++;
-
-    let input = document.querySelector('input');
+    // display the word from the active set
+    brailleWord.innerHTML = (activeSet) ? words[0] : letters[0];
 
     // everytime the user writes something 
     input.addEventListener('input', (event) => {
@@ -121,11 +122,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
         if (event.key == 'Enter') {
             // add element to list if the input and the braille word displayed are the same
             if (input.value == brailleWord.innerHTML) {
-                input.style.backgroundColor = 'white';
-                input.classList.remove('border-danger');
+                resetInput();
                 add2Chart(input.value);
-                brailleWord.innerHTML = words[index];
-                index = (index == words.length - 1) ? 0 : index + 1;
+                brailleWord.innerHTML = (activeSet) ? words[words.indexOf(brailleWord.innerHTML) + 1] : letters[letters.indexOf(brailleWord.innerHTML) + 1];
             } else {
                 input.style.backgroundColor = '#F6CCD0';
                 input.classList.add('border-danger');
@@ -136,3 +135,30 @@ window.addEventListener('DOMContentLoaded', (event) => {
         }
     });
 });
+
+function resetInput() {
+    input.style.backgroundColor = 'white';
+    input.classList.remove('border-danger');
+
+}
+function changeSet() {
+    firstChar = true;
+    activeSet = false;
+    stopwatch.reset();
+    stopwatch.stop();
+    input.value = '';
+    resetInput();
+    document.querySelector('input').disabled = false;
+    document.querySelector('.text-success').innerHTML = '';
+}
+function wordArray() {
+    changeSet();
+    brailleWord.innerHTML = words[0];
+    chart.innerHTML = '';
+
+}
+function letterArray() {
+    changeSet();
+    brailleWord.innerHTML = letters[0];
+    chart.innerHTML = '';
+}

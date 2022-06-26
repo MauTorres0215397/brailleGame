@@ -22,6 +22,11 @@ body {
     border-color: #DADADA;
 }
 
+.expand {
+    color: black;
+    font-size: 32px;
+}
+
 .braille-dots {
     font-family: myBraille;
 }
